@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+.husky/
+node_modules/
+public/
+
+package-lock.json
+package.json
+yarn.lock
+*.log

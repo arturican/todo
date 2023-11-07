@@ -25,18 +25,15 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.json' '*.ts' '*.tsx' '*.json'"
   },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [ "eslint --fix"]
+  },
+
   "browserslist": {
     "production": [
       ">0.2%",
