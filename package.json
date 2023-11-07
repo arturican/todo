@@ -23,10 +23,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**/*.ts'  'src/**/*.json' '*.ts'  '*.json'"
+    "lint": "eslint 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.json' '*.ts' '*.tsx' '*.json'"
   },
   "lint-staged": {
-    "*.{ts,json}": ["eslint --fix"]
+    "*.{ts,tsx,json}": [
+      "eslint --fix"
+    ]
   },
   "husky": {
     "hooks": {
@@ -51,6 +53,7 @@
     "eslint-plugin-prettier": "5.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
-    "prettier": "3.0.3"
+    "prettier": "3.0.3",
+    "stylelint-config-prettier": "^9.0.5"
   }
 }
