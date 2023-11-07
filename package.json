@@ -26,8 +26,10 @@
     "lint": "eslint 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.json' '*.ts' '*.tsx' '*.json'"
   },
   "lint-staged": {
-    "*.{ts,tsx,json}": [
-      "eslint --fix"
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
     ]
   },
   "husky": {
