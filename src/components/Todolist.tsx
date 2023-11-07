@@ -10,7 +10,6 @@ export  type  TodolistType = {
     filterTask: (filter: FilterType) => void
     addTask: (title: string) => void
     changeCheckStatus: (isDone: boolean, id: string) => void
-
     filter: FilterType
 
 }
