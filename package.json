@@ -23,16 +23,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.json' '*.ts' '*.tsx' '*.json'"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,json}": "eslint --fix"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "lint": "eslint 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.json' '*.ts' '*.tsx' '*.json'",
+    "lint-staged": {
+      "*.{ts,tsx,json}": "eslint --fix"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
     }
   },
+
+
   "eslintConfig": {
     "extends": [
       "react-app",
