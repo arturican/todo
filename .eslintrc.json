@@ -1,0 +1,12 @@
+{
+  "extends": ["react-app", "eslint:recommended", "plugin:prettier/recommended", "prettier/react"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  }
+}
