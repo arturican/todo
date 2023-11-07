@@ -45,7 +45,7 @@ function App() {
     }
 
     const changeCheckStaus = (isDone: boolean, id: string) => {
-        setTasks(tasks.map(t => t.id === id ? {...t, isDone: isDone} : t))
+        setTasks(tasks.map(t => t.id === id ? {...t, isDone: !isDone} : t))
     }
 
 
