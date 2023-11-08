@@ -48,7 +48,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <Todolist
         title={'What to learn'}
         tasks={taskForTodolist}
