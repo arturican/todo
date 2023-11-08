@@ -13,7 +13,7 @@ export type FilterType = 'all' | 'active' | 'completed';
 
 function App() {
   const [tasks, setTasks] = useState<TasksType[]>([
-    { id: v1(), title: 'HTML&CSS', isDone: true },
+    { id: v1(), title: 'HTML&CSS!', isDone: true },
     { id: v1(), title: 'JS', isDone: true },
     { id: v1(), title: 'React', isDone: false },
   ]);
