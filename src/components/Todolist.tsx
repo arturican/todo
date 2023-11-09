@@ -38,7 +38,7 @@ export const Todolist = (props: TodolistType) => {
 
   return (
     <div className={'wrapper'}>
-      <div className={'wrapperTitle'}>
+      <div className={'wrapper-title'}>
         <h3>{props.title}</h3>
         <button
           onClick={() => {
