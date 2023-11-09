@@ -1,3 +1,9 @@
+.wrapper-title {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
 .wrapper li {
   list-style: none;
 }

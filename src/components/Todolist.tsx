@@ -38,14 +38,17 @@ export const Todolist = (props: TodolistType) => {
 
   return (
     <div className={'wrapper'}>
-      <h3>{props.title}</h3>
-      <button
-        onClick={() => {
-          props.removeTodolist(props.id);
-        }}
-      >
-        X
-      </button>
+      <div className={'wrapperTitle'}>
+        <h3>{props.title}</h3>
+        <button
+          onClick={() => {
+            props.removeTodolist(props.id);
+          }}
+        >
+          X
+        </button>
+      </div>
+
       <div>
         <input
           onChange={onChangeHandler}
