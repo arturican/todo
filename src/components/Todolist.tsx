@@ -3,10 +3,11 @@ import { FilterType, TasksType } from '../App';
 import './Todolist.css';
 
 export type TodolistType = {
+  id: string;
   title: string;
   tasks: TasksType[];
   removeTask: (id: string) => void;
-  filterTask: (filter: FilterType) => void;
+  filterTask: (id: string, filter: FilterType) => void;
   addTask: (title: string) => void;
   changeCheckStatus: (isDone: boolean, id: string) => void;
   filter: FilterType;
@@ -68,14 +69,20 @@ export const Todolist = (props: TodolistType) => {
         })}
       </ul>
       <div>
-        <button onClick={() => props.filterTask('all')} className={props.filter === 'all' ? 'active-filter' : ''}>
+        <button
+          onClick={() => props.filterTask(props.id, 'all')}
+          className={props.filter === 'all' ? 'active-filter' : ''}
+        >
           All
         </button>
-        <button onClick={() => props.filterTask('active')} className={props.filter === 'active' ? 'active-filter' : ''}>
+        <button
+          onClick={() => props.filterTask(props.id, 'active')}
+          className={props.filter === 'active' ? 'active-filter' : ''}
+        >
           Active
         </button>
         <button
-          onClick={() => props.filterTask('completed')}
+          onClick={() => props.filterTask(props.id, 'completed')}
           className={props.filter === 'completed' ? 'active-filter' : ''}
         >
           Completed
