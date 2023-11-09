@@ -11,6 +11,7 @@ export type TodolistType = {
   addTask: (tlId: string, title: string) => void;
   changeCheckStatus: (tlId: string, isDone: boolean, id: string) => void;
   filter: FilterType;
+  removeTodolist: (tlId: string) => void;
 };
 export const Todolist = (props: TodolistType) => {
   const [title, setTitle] = useState('');
@@ -38,6 +39,13 @@ export const Todolist = (props: TodolistType) => {
   return (
     <div className={'wrapper'}>
       <h3>{props.title}</h3>
+      <button
+        onClick={() => {
+          props.removeTodolist(props.id);
+        }}
+      >
+        X
+      </button>
       <div>
         <input
           onChange={onChangeHandler}

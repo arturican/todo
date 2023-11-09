@@ -58,6 +58,10 @@ function App() {
     setTasks({ ...tasks, [tlId]: tasks[tlId].map((t) => (t.id === id ? { ...t, isDone: !isDone } : t)) });
   };
 
+  const removeTodolist = (tlId: string) => {
+    setTodolists(todolists.filter((tl) => tl.id !== tlId));
+  };
+
   return (
     <div className="app">
       {todolists.map((tl) => {
@@ -81,6 +85,7 @@ function App() {
             addTask={addTask}
             changeCheckStatus={changeCheckStaus}
             filter={tl.filter}
+            removeTodolist={removeTodolist}
           />
         );
       })}
