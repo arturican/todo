@@ -20,10 +20,16 @@ export type FilterType = 'all' | 'active' | 'completed';
 function App() {
   const todolistId1 = v1();
   const todolistId2 = v1();
+  const todolistId3 = v1();
 
   const [todolists, setTodolists] = useState<TodolistType[]>([
     { id: todolistId1, title: 'What to learn', filter: 'all' },
     { id: todolistId2, title: 'What to buy', filter: 'all' },
+    {
+      id: todolistId3,
+      title: 'What to buy',
+      filter: 'all',
+    },
   ]);
   const [tasks, setTasks] = useState<TasksType[]>([
     { id: v1(), title: 'HTML&CSS!!!', isDone: true },
