@@ -1,15 +1,15 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { FilterType, TasksType } from '../App';
+import { FilterType, TasksArrayType } from '../App';
 import './Todolist.css';
 
 export type TodolistType = {
   id: string;
   title: string;
-  tasks: TasksType[];
-  removeTask: (id: string) => void;
+  tasks: TasksArrayType[];
+  removeTask: (tlId: string, id: string) => void;
   filterTask: (id: string, filter: FilterType) => void;
-  addTask: (title: string) => void;
-  changeCheckStatus: (isDone: boolean, id: string) => void;
+  addTask: (tlId: string, title: string) => void;
+  changeCheckStatus: (tlId: string, isDone: boolean, id: string) => void;
   filter: FilterType;
 };
 export const Todolist = (props: TodolistType) => {
@@ -20,7 +20,7 @@ export const Todolist = (props: TodolistType) => {
     if (title.trim() === '') {
       serEror('Ошибка введите текст');
     } else {
-      props.addTask(title);
+      props.addTask(props.id, title);
       setTitle('');
     }
   };
@@ -51,7 +51,7 @@ export const Todolist = (props: TodolistType) => {
       <ul>
         {props.tasks.map((t) => {
           const onChangeHandler = () => {
-            props.changeCheckStatus(t.isDone, t.id);
+            props.changeCheckStatus(props.id, t.isDone, t.id);
           };
 
           return (
@@ -63,7 +63,7 @@ export const Todolist = (props: TodolistType) => {
                 className={t.isDone ? 'is-done' : ''}
               />
               {t.title}
-              <button onClick={() => props.removeTask(t.id)}>x</button>
+              <button onClick={() => props.removeTask(props.id, t.id)}>x</button>
             </li>
           );
         })}
