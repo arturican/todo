@@ -15,6 +15,9 @@ export type TodolistType = {
   removeTodolist: (tlId: string) => void;
 };
 export const Todolist = (props: TodolistType) => {
+  const addTaskHadler = (title: string) => {
+    props.addTask(props.id, title);
+  };
   return (
     <div className={'wrapper'}>
       <div className={'wrapper-title'}>
@@ -27,7 +30,7 @@ export const Todolist = (props: TodolistType) => {
           X
         </button>
       </div>
-      <AddItemForm id={props.id} addTaskForm={props.addTask} />
+      <AddItemForm addItem={addTaskHadler} />
 
       <ul>
         {props.tasks.map((t) => {

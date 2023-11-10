@@ -1,8 +1,7 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 export type AddItemForm = {
-  id: string;
-  addTaskForm: (is: string, title: string) => void;
+  addItem: (title: string) => void;
 };
 
 export const AddItemForm = (props: AddItemForm) => {
@@ -12,7 +11,7 @@ export const AddItemForm = (props: AddItemForm) => {
     if (title.trim() === '') {
       serEror('Ошибка введите текст');
     } else {
-      props.addTaskForm(props.id, title);
+      props.addItem(title);
       setTitle('');
     }
   };
