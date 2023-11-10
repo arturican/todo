@@ -2,6 +2,7 @@ import React from 'react';
 import { FilterType, TasksArrayType } from '../App';
 import './Todolist.css';
 import { AddItemForm } from './AddItemForm';
+import { EditSpan } from './EditSpan';
 
 export type TodolistType = {
   id: string;
@@ -13,15 +14,22 @@ export type TodolistType = {
   changeCheckStatus: (tlId: string, isDone: boolean, id: string) => void;
   filter: FilterType;
   removeTodolist: (tlId: string) => void;
+  updateTask: (tlId: string, idTask: string, title: string) => void;
+  updateTodolistTitle: (tlId: string, title: string) => void;
 };
 export const Todolist = (props: TodolistType) => {
   const addTaskHadler = (title: string) => {
     props.addTask(props.id, title);
   };
+  const editSpanTodolistHandler = (title: string) => {
+    props.updateTodolistTitle(props.id, title);
+  };
   return (
     <div className={'wrapper'}>
       <div className={'wrapper-title'}>
-        <h3>{props.title}</h3>
+        <h3>
+          <EditSpan value={props.title} onChange={editSpanTodolistHandler} />
+        </h3>
         <button
           onClick={() => {
             props.removeTodolist(props.id);
@@ -37,6 +45,9 @@ export const Todolist = (props: TodolistType) => {
           const onChangeHandler = () => {
             props.changeCheckStatus(props.id, t.isDone, t.id);
           };
+          const editSpanTaskHandler = (title: string) => {
+            props.updateTask(props.id, t.id, title);
+          };
 
           return (
             <li key={t.id}>
@@ -46,7 +57,7 @@ export const Todolist = (props: TodolistType) => {
                 onChange={onChangeHandler}
                 className={t.isDone ? 'is-done' : ''}
               />
-              {t.title}
+              <EditSpan value={t.title} onChange={editSpanTaskHandler} />
               <button onClick={() => props.removeTask(props.id, t.id)}>x</button>
             </li>
           );

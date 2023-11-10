@@ -69,6 +69,14 @@ function App() {
     setTasks({ ...tasks, [newTodolistId]: [] });
   };
 
+  const updateTask = (tlId: string, idTask: string, title: string) => {
+    setTasks({ ...tasks, [tlId]: tasks[tlId].map((t) => (t.id === idTask ? { ...t, title: title } : t)) });
+  };
+
+  const updateTodolistTitle = (tlId: string, title: string) => {
+    setTodolists(todolists.map((t) => (t.id === tlId ? { ...t, title: title } : t)));
+  };
+
   return (
     <div className="app">
       <AddItemForm addItem={addTodolist} />
@@ -94,6 +102,8 @@ function App() {
             changeCheckStatus={changeCheckStaus}
             filter={tl.filter}
             removeTodolist={removeTodolist}
+            updateTask={updateTask}
+            updateTodolistTitle={updateTodolistTitle}
           />
         );
       })}
