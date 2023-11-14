@@ -25,7 +25,7 @@ export const Todolist = (props: TodolistType) => {
     const editSpanTodolistHandler = (title: string) => {
         props.updateTodolistTitle(props.id, title);
     };
-    const onChangeHandler = (isDone: boolean, id: string) => {
+    const onChangeCheckboxHandler = (isDone: boolean, id: string) => {
         props.changeCheckStatus(props.id, isDone, id);
     };
     return (
@@ -64,7 +64,7 @@ export const Todolist = (props: TodolistType) => {
                             <Checkbox
                                 style={t.isDone}
                                 checked={t.isDone}
-                                callBack={() => onChangeHandler(t.isDone, t.id)}
+                                callBack={() => onChangeCheckboxHandler(t.isDone, t.id)}
                             />
                             <EditSpan value={t.title} onChange={editSpanTaskHandler}/>
                             <button onClick={() => props.removeTask(props.id, t.id)}>x</button>
