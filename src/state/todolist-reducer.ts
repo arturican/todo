@@ -20,8 +20,8 @@ export const removeTodolistAC = (id: string) => {
     type: 'REMOVE-TODOLIST',
     payload: {
       id,
-    } as const,
-  };
+    },
+  } as const;
 };
 
 export type AddTodolistACType = ReturnType<typeof addTodolistAC>;
@@ -30,6 +30,6 @@ export const addTodolistAC = (title: string) => {
     type: 'ADD-TODOLIST',
     payload: {
       title,
-    } as const,
-  };
+    },
+  } as const;
 };
