@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import './App.css';
 import { Todolist } from './components/Todolist';
 import { v1 } from 'uuid';
+import { addTaskAC, changeCheckStausAC, removeTaskAC, tasksReducer } from './reducers/tasksReducer';
 
 export type TasksType = {
   id: string;
@@ -12,7 +13,7 @@ export type TasksType = {
 export type FilterType = 'all' | 'active' | 'completed';
 
 function App() {
-  const [tasks, setTasks] = useState<TasksType[]>([
+  const [tasks, dispatchTasks] = useReducer(tasksReducer, [
     { id: v1(), title: 'HTML&CSS!!!', isDone: true },
     { id: v1(), title: 'JS', isDone: true },
     { id: v1(), title: 'React', isDone: false },
@@ -30,21 +31,21 @@ function App() {
       taskForTodolist = tasks.filter((t) => t.isDone === true);
       break;
   }
-
   const removeTask = (id: string) => {
-    setTasks(tasks.filter((t) => t.id !== id));
+    //setTasks(tasks.filter((t) => t.id !== id));
+    dispatchTasks(removeTaskAC(id));
   };
 
   const filterTask = (filter: FilterType) => {
     setFilter(filter);
   };
-
   const addTask = (title: string) => {
-    setTasks([{ id: v1(), title: title, isDone: false }, ...tasks]);
+    //setTasks([{ id: v1(), title: title, isDone: false }, ...tasks]);
+    dispatchTasks(addTaskAC(title));
   };
-
   const changeCheckStaus = (isDone: boolean, id: string) => {
-    setTasks(tasks.map((t) => (t.id === id ? { ...t, isDone: !isDone } : t)));
+    //setTasks(tasks.map((t) => (t.id === id ? {...t, isDone: !isDone} : t)));
+    dispatchTasks(changeCheckStausAC(isDone, id));
   };
 
   return (
