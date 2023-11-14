@@ -1,5 +1,5 @@
 import { TodolistType } from '../App';
-import {v1} from "uuid";
+import { v1 } from 'uuid';
 
 export const todolistReducer = (state: TodolistType[], action: MainTodolistType): TodolistType[] => {
   switch (action.type) {
@@ -7,7 +7,7 @@ export const todolistReducer = (state: TodolistType[], action: MainTodolistType)
       return state.filter((tl) => tl.id !== action.payload.id);
     }
     case 'ADD-TODOLIST': {
-      return [...state, {id: v1(), title: action.payload.title, filter: 'all'}]
+      return [...state, { id: v1(), title: action.payload.title, filter: 'all' }];
     }
     default:
       return state;
@@ -32,4 +32,4 @@ export const addTodolistAC = (title: string) => {
       title,
     } as const,
   };
-}
+};
