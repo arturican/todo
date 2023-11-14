@@ -3,7 +3,7 @@ import { TodolistType } from '../App';
 export const todolistReducer = (state: TodolistType[], action: MainTodolistType): TodolistType[] => {
   switch (action.type) {
     case 'REMOVE-TODOLIST': {
-      return state;
+      return state.filter((tl) => tl.id !== action.payload.id);
     }
     default:
       return state;
