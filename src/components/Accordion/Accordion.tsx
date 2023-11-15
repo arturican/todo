@@ -2,6 +2,7 @@ import React from 'react';
 
 type Accordion = {
   title: string;
+  collapsed: boolean;
 };
 type AccordionTitleType = {
   title: string;
@@ -10,7 +11,7 @@ export const Accordion = (props: Accordion) => {
   return (
     <div>
       <AccordionTitle title={props.title} />
-      <AccordionBody />
+      {!props.collapsed ? <AccordionBody /> : ''}
     </div>
   );
 };
