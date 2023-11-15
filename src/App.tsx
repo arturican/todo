@@ -14,18 +14,17 @@ function App() {
 const Rating = () => {
   return (
     <div>
-      <Star/>
-      <Star/>
-      <Star/>
-      <Star/>
-      <Star/>
+      <Star />
+      <Star />
+      <Star />
+      <Star />
     </div>
   );
 };
 
 const Star = () => {
-    return <div>star</div>
-}
+  return <div>star</div>;
+};
 
 const Accordion = () => {
   return (
