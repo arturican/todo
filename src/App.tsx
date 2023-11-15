@@ -4,21 +4,23 @@ import './App.css';
 function App() {
   return (
     <div>
-      This is App component
+      <AppTitle />
       <Rating />
       <Accordion />
     </div>
   );
 }
-
+const AppTitle = () => {
+  return <>This is App component</>;
+};
 const Rating = () => {
   return (
-    <div>
+    <>
       <Star />
       <Star />
       <Star />
       <Star />
-    </div>
+    </>
   );
 };
 
@@ -29,14 +31,22 @@ const Star = () => {
 const Accordion = () => {
   return (
     <div>
-      <h3>Меню</h3>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </ul>
+      <AccordionTitle />
+      <AccordionBody />
     </div>
   );
 };
 
+const AccordionTitle = () => {
+  return <h3>Меню</h3>;
+};
+const AccordionBody = () => {
+  return (
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  );
+};
 export default App;
