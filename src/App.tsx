@@ -1,65 +1,23 @@
-import React, { useState } from 'react';
-import './App.css';
-import { Todolist } from './components/Todolist';
-import { v1 } from 'uuid';
+import React from 'react';
+import { NewComponet } from './components/NewComponet';
 
-export type TasksType = {
-  id: string;
-  title: string;
-  isDone: boolean;
-};
-
-export type FilterType = 'all' | 'active' | 'completed';
-
-function App() {
-  const [tasks, setTasks] = useState<TasksType[]>([
-    { id: v1(), title: 'HTML&CSS!!!', isDone: true },
-    { id: v1(), title: 'JS', isDone: true },
-    { id: v1(), title: 'React', isDone: false },
-  ]);
-
-  let taskForTodolist = tasks;
-
-  const [filter, setFilter] = useState<FilterType>('all');
-
-  switch (filter) {
-    case 'active':
-      taskForTodolist = tasks.filter((t) => t.isDone === false);
-      break;
-    case 'completed':
-      taskForTodolist = tasks.filter((t) => t.isDone === true);
-      break;
-  }
-
-  const removeTask = (id: string) => {
-    setTasks(tasks.filter((t) => t.id !== id));
-  };
-
-  const filterTask = (filter: FilterType) => {
-    setFilter(filter);
-  };
-
-  const addTask = (title: string) => {
-    setTasks([{ id: v1(), title: title, isDone: false }, ...tasks]);
-  };
-
-  const changeCheckStaus = (isDone: boolean, id: string) => {
-    setTasks(tasks.map((t) => (t.id === id ? { ...t, isDone: !isDone } : t)));
-  };
-
+export const App = () => {
+  const students = [
+    { id: 1, name: 'James', age: 8 },
+    { id: 2, name: 'Robert', age: 18 },
+    { id: 3, name: 'John', age: 28 },
+    { id: 4, name: 'Michael', age: 38 },
+    { id: 5, name: 'William', age: 48 },
+    { id: 6, name: 'David', age: 58 },
+    { id: 7, name: 'Richard', age: 68 },
+    { id: 8, name: 'Joseph', age: 78 },
+    { id: 9, name: 'Thomas', age: 88 },
+    { id: 10, name: 'Charles', age: 98 },
+    { id: 11, name: 'Christopher', age: 100 },
+  ];
   return (
-    <div className="app">
-      <Todolist
-        title={'What to learn'}
-        tasks={taskForTodolist}
-        removeTask={removeTask}
-        filterTask={filterTask}
-        addTask={addTask}
-        changeCheckStatus={changeCheckStaus}
-        filter={filter}
-      />
-    </div>
+    <>
+      <NewComponet students={students} />
+    </>
   );
-}
-
-export default App;
+};
