@@ -1,4 +1,17 @@
+/* App.css */
+/* App.css */
+/* App.css */
 .app {
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template:
+    'header header'
+    'navbar content' / 1fr 4fr; /* Указываем ширину колонок явно */
+  gap: 20px;
+  padding: 20px;
 }
+
+/* Применяем гридовую область для Header компоненты */
+
+/* Применяем гридовую область для Navbar компоненты */
+
+/* Применяем гридовую область для Profile компоненты */

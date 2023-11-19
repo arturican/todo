@@ -1,0 +1,23 @@
+/* Header.css */
+.header {
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-area: header;
+}
+
+.header a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.header a:hover {
+  color: #ff4500; /* Измените цвет при наведении на ваш выбор */
+}
+
+/* Стили для вашего логотипа могут быть добавлены здесь */
