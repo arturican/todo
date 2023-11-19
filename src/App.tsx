@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Accordion } from './components/Accordion/Accordion';
 import { Rating } from './components/Rating/Rating';
+import { OnOff } from './components/OnOff/OnOff';
 
 export type PageTitleType = {
   title: string;
@@ -18,6 +19,8 @@ function App() {
       <Rating value={5} />
       <Accordion title={'Menu'} collapsed={true} />
       <Accordion title={'Users'} collapsed={false} />
+      <OnOff on={true} />
+      <OnOff on={false} />
     </div>
   );
 }
