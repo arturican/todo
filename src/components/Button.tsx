@@ -5,4 +5,10 @@ type ButtonType = {
   callBack: () => void;
 };
 
-export const Button: React.FC<ButtonType> = ({ name, callBack }) => <button onClick={callBack}>{name}</button>;
+export const Button = (props: ButtonType) => {
+  return (
+    <>
+      <button onClick={props.callBack}>{props.name}</button>
+    </>
+  );
+};
