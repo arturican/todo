@@ -4,6 +4,8 @@ import { Accordion } from './components/Accordion/Accordion';
 import { Rating } from './components/Rating/Rating';
 import { OnOff } from './components/OnOff/OnOff';
 import { UncontrolOnOff } from './components/UncontrolOnOf/UncontrolOnOff';
+import { UncontrolAccordion } from './components/UncontrolAccordion/UncontrolAccordion';
+import { UncontrolRating } from './components/UncontrolRating/UncontrolRating';
 
 export type PageTitleType = {
   title: string;
@@ -27,6 +29,8 @@ function App() {
       <UncontrolOnOff />
       <UncontrolOnOff />
       <UncontrolOnOff />
+      <UncontrolAccordion title={'List'} />
+      <UncontrolRating />
     </div>
   );
 }
