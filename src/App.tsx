@@ -3,14 +3,16 @@ import './App.css';
 import { Accordion } from './components/Accordion/Accordion';
 import { Rating } from './components/Rating/Rating';
 import { OnOff } from './components/OnOff/OnOff';
+import { UncontrolOnOff } from './components/UncontrolOnOf/UncontrolOnOff';
 
 export type PageTitleType = {
   title: string;
 };
+
 function App() {
   return (
     <div>
-      <PageTitle title={'This is App component<'} />
+      <PageTitle title={'This is App component'} />
       <Rating value={0} />
       <Rating value={1} />
       <Rating value={2} />
@@ -21,9 +23,14 @@ function App() {
       <Accordion title={'Users'} collapsed={false} />
       <OnOff on={true} />
       <OnOff on={false} />
+      <UncontrolOnOff />
+      <UncontrolOnOff />
+      <UncontrolOnOff />
+      <UncontrolOnOff />
     </div>
   );
 }
+
 const PageTitle = (props: PageTitleType) => {
   return <h3>{props.title}</h3>;
 };
