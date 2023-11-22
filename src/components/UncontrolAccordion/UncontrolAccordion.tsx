@@ -11,9 +11,9 @@ export const UncontrolAccordion = (props: Accordion) => {
   console.log(collapsed);
   return (
     <div>
-      <a onClick={() => setCollapsed(!collapsed)}>
+      <h3 onClick={() => setCollapsed(!collapsed)}>
         <AccordionTitle title={props.title} />
-      </a>
+      </h3>
       {collapsed && <AccordionBody />}
     </div>
   );
