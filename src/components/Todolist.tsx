@@ -25,7 +25,7 @@ export const Todolist = (props: TodolistProps) => {
   };
   const onTaskTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value);
-    serError(null);
+    serError(undefined);
   };
 
   const onTaskTitleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {

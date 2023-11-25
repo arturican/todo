@@ -43,7 +43,7 @@ function App() {
     setTasks([{ id: v1(), title: title, isDone: false }, ...tasks]);
   };
 
-  const changeTaskStatus = (isDone: boolean, id: string) => {
+  const changeTaskStatus = (id: string, isDone: boolean) => {
     setTasks(tasks.map((t) => (t.id === id ? { ...t, isDone: isDone } : t)));
   };
 
