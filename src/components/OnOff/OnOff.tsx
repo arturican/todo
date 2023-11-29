@@ -2,6 +2,7 @@ import React from 'react';
 
 type OnOffProps = {
   on: boolean;
+  onClick: () => void;
 };
 export const OnOff = (props: OnOffProps) => {
   const styleButtonOff = {
@@ -35,10 +36,12 @@ export const OnOff = (props: OnOffProps) => {
 
   return (
     <div style={style}>
-      <div style={styleButtonOn}>
+      <div style={styleButtonOn} onClick={props.onClick}>
         <span>ON</span>
       </div>
-      <div style={styleButtonOff}>OFF</div>
+      <div style={styleButtonOff} onClick={props.onClick}>
+        OFF
+      </div>
       <div style={styleCircle}></div>
     </div>
   );
