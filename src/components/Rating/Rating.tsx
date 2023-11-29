@@ -18,11 +18,5 @@ export const Rating = (props: RatingType) => {
   );
 };
 const Star = (props: StarType) => {
-  return props.selected ? (
-    <span>
-      <b>star</b>{' '}
-    </span>
-  ) : (
-    <span>star </span>
-  );
+  return <span>{props.selected ? <b>star--</b> : 'star--'}</span>;
 };

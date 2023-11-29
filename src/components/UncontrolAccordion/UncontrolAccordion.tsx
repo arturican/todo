@@ -5,21 +5,20 @@ type Accordion = {
 };
 type AccordionTitleType = {
   title: string;
+  onClick: () => void;
 };
 export const UncontrolAccordion = (props: Accordion) => {
   const [collapsed, setCollapsed] = useState(false);
   console.log(collapsed);
   return (
     <div>
-      <h3 onClick={() => setCollapsed(!collapsed)}>
-        <AccordionTitle title={props.title} />
-      </h3>
+      <AccordionTitle title={props.title} onClick={() => setCollapsed(!collapsed)} />
       {collapsed && <AccordionBody />}
     </div>
   );
 };
 const AccordionTitle = (props: AccordionTitleType) => {
-  return <h3>{props.title}</h3>;
+  return <h3 onClick={() => props.onClick()}>{props.title}</h3>;
 };
 const AccordionBody = () => {
   return (
