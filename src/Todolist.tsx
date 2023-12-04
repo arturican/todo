@@ -8,20 +8,22 @@ type TaskType = {
 };
 
 type TodolistProps = {
+  id: string;
   title: string;
   tasks: TaskType[];
-  removeTask: (taskId: string) => void;
-  taskFilter: (value: TaskFilter) => void;
-  addTask: (title: string) => void;
-  changeTaskStatus: (id: string, isDone: boolean) => void;
+  removeTask: (tlId: string, taskId: string) => void;
+  taskFilter: (tlId: string, value: TaskFilter) => void;
+  addTask: (tlId: string, title: string) => void;
+  changeTaskStatus: (tlId: string, id: string, isDone: boolean) => void;
   filter: TaskFilter;
+  removeTodolist: (id: string) => void;
 };
 
 export function Todolist(props: TodolistProps) {
   const [title, setTitle] = useState('');
   const [error, setError] = useState<string | undefined>();
   const onAddTaskButtonClick = () => {
-    title.trim() === '' ? setError('Ошибка! Введите текст') : props.addTask(title.trim());
+    title.trim() === '' ? setError('Ошибка! Введите текст') : props.addTask(props.id, title.trim());
     setTitle('');
   };
   const onTaskTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,12 +37,13 @@ export function Todolist(props: TodolistProps) {
     }
   };
 
-  const onTaskStatusChange = (id: string, isDone: boolean) => {
-    props.changeTaskStatus(id, !isDone);
+  const onTaskStatusChange = (tlId: string, id: string, isDone: boolean) => {
+    props.changeTaskStatus(tlId, id, !isDone);
   };
   return (
     <div>
       <h3>{props.title}</h3>
+      <button onClick={() => props.removeTodolist(props.id)}>x</button>
       <div>
         <input value={title} onChange={onTaskTitleChange} onKeyPress={onTaskTitleKeyPress} />
         <button onClick={onAddTaskButtonClick}>+</button>
@@ -49,11 +52,11 @@ export function Todolist(props: TodolistProps) {
       <ul>
         {props.tasks.map((t) => (
           <li key={t.id}>
-            <input type="checkbox" checked={t.isDone} onClick={() => onTaskStatusChange(t.id, t.isDone)} />
+            <input type="checkbox" checked={t.isDone} onClick={() => onTaskStatusChange(props.id, t.id, t.isDone)} />
             <span>{t.title}</span>
             <button
               onClick={() => {
-                props.removeTask(t.id);
+                props.removeTask(props.id, t.id);
               }}
             >
               x
@@ -62,14 +65,20 @@ export function Todolist(props: TodolistProps) {
         ))}
       </ul>
       <div>
-        <button onClick={() => props.taskFilter('all')} className={props.filter === 'all' ? 'active-filter' : ''}>
+        <button
+          onClick={() => props.taskFilter(props.id, 'all')}
+          className={props.filter === 'all' ? 'active-filter' : ''}
+        >
           All
         </button>
-        <button onClick={() => props.taskFilter('active')} className={props.filter === 'active' ? 'active-filter' : ''}>
+        <button
+          onClick={() => props.taskFilter(props.id, 'active')}
+          className={props.filter === 'active' ? 'active-filter' : ''}
+        >
           Active
         </button>
         <button
-          onClick={() => props.taskFilter('completed')}
+          onClick={() => props.taskFilter(props.id, 'completed')}
           className={props.filter === 'completed' ? 'active-filter' : ''}
         >
           Completed
