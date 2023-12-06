@@ -1,0 +1,9 @@
+.numbers {
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  border: solid #62d7fb 3px;
+  color: #62d7fb;
+  font-size: 80px;
+  border-radius: 10px;
+}
