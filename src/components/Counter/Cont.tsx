@@ -12,7 +12,7 @@ export const Cont = () => {
         <Number number={number} />
       </div>
       <div className={'counter-button'}>
-        <Button title={'ins'} callBack={numberIncrement} />
+        <Button title={'ins'} callBack={numberIncrement} disabled={number} />
         <Button title={'reset'} callBack={numberReset} />
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import './Button.css';
 
 type ButtonProps = {
+  disabled?: number;
   title: string;
   callBack: () => void;
 };
@@ -10,7 +11,11 @@ export const Button = (props: ButtonProps) => {
     props.callBack();
   };
   return (
-    <button className={'button'} onClick={counterPlus}>
+    <button
+      className={props.disabled === 5 ? 'disabled' : 'button'}
+      onClick={counterPlus}
+      disabled={props.disabled === 5}
+    >
       {props.title}
     </button>
   );
