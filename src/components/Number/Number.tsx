@@ -3,7 +3,13 @@ import './Number.css';
 
 type NumberProps = {
   number: number;
+  maxValue: number;
+  minValue: number;
 };
 export const Number = (props: NumberProps) => {
-  return <div className={props.number === 5 ? 'red' : 'numbers'}>{props.number}</div>;
+  return props.minValue < 0 ? (
+    <span>Ошибка</span>
+  ) : (
+    <div className={props.number === props.maxValue ? 'red' : 'numbers'}>{props.number}</div>
+  );
 };

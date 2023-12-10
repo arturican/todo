@@ -1,31 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Number } from '../Number/Number';
 import { Button } from '../Button/Button';
 
-export const Cont = () => {
-  const [number, setNumbers] = useState(0);
+type ContProps = {
+  number: number;
+  minValue: number;
+  maxValue: number;
+  setNumber: (value: number) => void;
+};
 
-  useEffect(() => {
-    const number = localStorage.getItem('current');
-    if (number) {
-      setNumbers(JSON.parse(number));
-    }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('current', JSON.stringify(number));
-  }, [number]);
-
+export const Cont = (props: ContProps) => {
   const numberIncrement = () => {
-    setNumbers(number + 1);
+    props.setNumber(props.number + 1);
   };
-  const numberReset = () => setNumbers(0);
+  const numberReset = () => props.setNumber(props.minValue);
   return (
     <div className={'counter'}>
       <div className={'counterNumber'}>
-        <Number number={number} />
+        <Number number={props.number} maxValue={props.maxValue} minValue={props.minValue} />
       </div>
       <div className={'counter-button'}>
-        <Button title={'ins'} callBack={numberIncrement} disabled={number} />
+        <Button title={'ins'} callBack={numberIncrement} disabled={props.number === props.maxValue} />
         <Button title={'reset'} callBack={numberReset} />
       </div>
     </div>

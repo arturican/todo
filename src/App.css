@@ -7,6 +7,7 @@
   height: 49em;
   background: #2a2c36;
 }
+
 .counter {
   display: flex;
   flex-direction: column;
