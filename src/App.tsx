@@ -3,7 +3,7 @@ import './App.css';
 import { Accordion } from './components/Accordion/Accordion';
 import { Rating } from './components/Rating/Rating';
 import { OnOff } from './components/OnOff/OnOff';
-import { UncontrolOnOff } from './components/UncontrolOnOf/UncontrolOnOff';
+import { UncontrolOnOff } from './components/UncontrolOnOff/UncontrolOnOff';
 import { UncontrolAccordion } from './components/UncontrolAccordion/UncontrolAccordion';
 import { RatingValue, UncontrolRating } from './components/UncontrolRating/UncontrolRating';
 

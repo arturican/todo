@@ -20,6 +20,6 @@ export const Rating = (props: RatingType) => {
     </div>
   );
 };
-const Star = (props: StarType) => {
+export const Star = (props: StarType) => {
   return <span onClick={props.onClick}>{props.selected ? <b>star </b> : 'star '}</span>;
 };

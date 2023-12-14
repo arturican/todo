@@ -1,8 +1,8 @@
 import React from 'react';
 
 type OnOffProps = {
-  on: boolean;
-  onClick: () => void;
+  on?: boolean;
+  onClick?: () => void;
 };
 export const OnOff = (props: OnOffProps) => {
   const styleButtonOff = {

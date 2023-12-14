@@ -3,7 +3,7 @@ import React, { ChangeEvent } from 'react';
 export type InputProps = {
   value: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  type: string;
+  type?: string;
 };
 
 export const Input = (props: InputProps) => {
