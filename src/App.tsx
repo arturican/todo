@@ -19,7 +19,16 @@ function App() {
     <div>
       <PageTitle title={'This is App component'} />
       <Rating value={ratingValue} callBack={setRatingValue} />
-      <Accordion title={'Menu'} onClick={() => setCollapsed(!collapsed)} collapsed={collapsed} />
+      <Accordion
+        title={'Menu'}
+        onChange={() => setCollapsed(!collapsed)}
+        collapsed={collapsed}
+        items={[
+          { title: 'Art', value: 1 },
+          { title: 'Dil', value: 2 },
+          { title: 'Mosk', value: 3 },
+        ]}
+      />
       <OnOff on={on} onClick={() => setOn(!on)} />
       <UncontrolOnOff />
       <UncontrolAccordion title={'List'} />
