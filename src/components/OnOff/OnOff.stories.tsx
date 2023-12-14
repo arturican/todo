@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { OnOff } from './OnOff';
-
-import React, { useState } from 'react';
+import React from 'react';
+import { UncontrolOnOff } from '../UncontrolOnOff/UncontrolOnOff';
 
 const meta: Meta<typeof OnOff> = {
   title: 'OnOff',
@@ -24,14 +24,6 @@ export const OffMode: Story = {
   },
 };
 
-const ModeChangeOnOff = () => {
-  const [on, setOn] = useState(false);
-  const onClickHandler = () => {
-    setOn(!on);
-  };
-  return <OnOff on={on} onClick={onClickHandler} />;
-};
-
 export const ModeChange: Story = {
-  render: () => <ModeChangeOnOff />,
+  render: () => <UncontrolOnOff />,
 };

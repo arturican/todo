@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Rating, Star } from './Rating';
-import React, { useState } from 'react';
-import { RatingValue } from '../UncontrolRating/UncontrolRating';
+import { Rating } from './Rating';
+import React from 'react';
+import { UncontrolRating } from '../UncontrolRating/UncontrolRating';
 
 const meta: Meta<typeof Rating> = {
   title: 'Rating',
@@ -18,20 +18,6 @@ export const Default: Story = {
   },
 };
 
-const ModeRating = () => {
-  const [value, setValue] = useState<RatingValue>(0);
-
-  return (
-    <div>
-      <Star selected={value > 0} onClick={() => setValue(1)} />
-      <Star selected={value > 1} onClick={() => setValue(2)} />
-      <Star selected={value > 2} onClick={() => setValue(3)} />
-      <Star selected={value > 3} onClick={() => setValue(4)} />
-      <Star selected={value > 4} onClick={() => setValue(5)} />
-    </div>
-  );
-};
-
-export const UncontrolRating: Story = {
-  render: () => <ModeRating />,
+export const ModeRating: Story = {
+  render: () => <UncontrolRating />,
 };
