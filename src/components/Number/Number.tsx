@@ -8,7 +8,7 @@ type NumberProps = {
 };
 export const Number = (props: NumberProps) => {
   return props.minValue < 0 ? (
-    <span>Ошибка</span>
+    <span className={'error'}>Ошибка</span>
   ) : (
     <div className={props.number === props.maxValue ? 'red' : 'numbers'}>{props.number}</div>
   );
