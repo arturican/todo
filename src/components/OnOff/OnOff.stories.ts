@@ -7,6 +7,10 @@ const meta: Meta<typeof OnOff> = {
   // ...
 };
 export default meta;
-type Story = StoryObj<OnOff>;
+type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {};
+export const OnTrueAndFalse: Story = {
+  args: {
+    on: true,
+  },
+};

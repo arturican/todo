@@ -7,6 +7,6 @@ const meta: Meta<typeof UncontrolOnOff> = {
   // ...
 };
 export default meta;
-type Story = StoryObj<UncontrolOnOff>;
+type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {};
+export const Mode: Story = {};
