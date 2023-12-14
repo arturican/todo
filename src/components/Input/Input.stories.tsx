@@ -54,3 +54,24 @@ const InputWithRefHooks = () => {
 export const ControlValueOfUnconrolledInputByButtonPress: Story = {
   render: () => <InputWithRefHooks />,
 };
+
+export const InputCheckbox = () => {
+  const [value, setValue] = useState(false);
+  return <input type={'checkbox'} checked={value} onChange={(event) => setValue(event.currentTarget.checked)} />;
+};
+
+export const InputSelect = () => {
+  const [value, setValue] = useState('0');
+
+  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.currentTarget.value);
+  };
+  return (
+    <select value={value} onChange={onChange}>
+      <option value={1}>Kazan</option>
+      <option value={2}>Almet</option>
+      <option value={3}>Moscow</option>
+      <option value={0}>none</option>
+    </select>
+  );
+};
