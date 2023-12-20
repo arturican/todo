@@ -3,7 +3,7 @@ import { TaskFilter } from '../App';
 import { AddItemForm } from './AddItemForm';
 import { EditSpan } from './EditSpan';
 
-type TaskType = {
+export type TaskType = {
   id: string;
   title: string;
   isDone: boolean;

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import './App.css';
 import { Todolist } from './components/Todolist';
 import { v1 } from 'uuid';
 import { AddItemForm } from './components/AddItemForm';
+import { removeTaskAC, tasksReducer } from './reducers/tasksReducer';
 
 export type TaskFilter = 'all' | 'active' | 'completed';
 export type TodolistsProps = {
@@ -20,7 +21,19 @@ function App() {
     { id: todolistID2, title: 'What to buy', filter: 'all' },
   ]);
 
-  const [tasks, setTasks] = useState({
+  /*const [tasks, setTasks] = useState({
+    [todolistID1]: [
+      { id: v1(), title: 'HTML&CSS', isDone: true },
+      { id: v1(), title: 'JS', isDone: true },
+      { id: v1(), title: 'ReactJS', isDone: false },
+    ],
+    [todolistID2]: [
+      { id: v1(), title: 'Rest API', isDone: true },
+      { id: v1(), title: 'GraphQL', isDone: false },
+    ],
+  });*/
+
+  const [tasks, dispatchTasks] = useReducer(tasksReducer, {
     [todolistID1]: [
       { id: v1(), title: 'HTML&CSS', isDone: true },
       { id: v1(), title: 'JS', isDone: true },
@@ -35,7 +48,7 @@ function App() {
   function removeTask(tlId: string, id: string) {
     /*const filteredTasks = tasks.filter((t) => t.id !== id);
             setTasks(filteredTasks);*/
-    setTasks({ ...tasks, [tlId]: tasks[tlId].filter((task) => task.id !== id) });
+    dispatchTasks(removeTaskAC(tlId, id));
   }
 
   const removeTodolist = (id: string) => {
