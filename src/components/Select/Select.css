@@ -1,0 +1,18 @@
+.select {
+  width: min-content;
+  padding: 10px;
+  background-color: silver;
+  border: 2px solid beige;
+}
+
+.select div {
+  /* Ваши существующие стили для каждого элемента выпадающего списка */
+  cursor: pointer;
+  padding: 5px;
+}
+
+.select div.selected {
+  /* Стили для выбранного элемента */
+  background-color: #a0d3e8;
+  color: #ffffff;
+}
