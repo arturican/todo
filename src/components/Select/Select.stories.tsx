@@ -10,10 +10,20 @@ const meta: Meta<typeof Select> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const WithValue: Story = {
   args: {
     items: [
-      { title: 'None', value: '0' },
+      { title: 'Art', value: '1' },
+      { title: 'Dil', value: '2' },
+      { title: 'Mosk', value: '3' },
+    ],
+    value: '2',
+  },
+};
+
+export const WithOutValue: Story = {
+  args: {
+    items: [
       { title: 'Art', value: '1' },
       { title: 'Dil', value: '2' },
       { title: 'Mosk', value: '3' },

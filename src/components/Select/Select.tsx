@@ -12,22 +12,20 @@ export type SelectProps = {
 };
 
 export const Select = (props: SelectProps) => {
-  const [value, setValue] = useState('None');
-  const [mode, setMode] = useState(false);
-  const onClickHandler = (title: string) => {
-    setValue(title);
-    setMode(!mode);
-  };
+  const [active, setActive] = useState(false);
+  const selectItem = props.items.find((el) => el.value === props.value);
+  const toggleItems = () => setActive(!active);
   return (
-    <div className={'select'}>
-      {!mode ? (
-        <div onClick={() => setMode(true)}>{value} </div>
-      ) : (
-        props.items.map((i) => (
-          <div key={i.value} onClick={() => onClickHandler(i.title)} className={value === i.title ? 'selected' : ''}>
-            {i.title}
-          </div>
-        ))
+    <div>
+      <span className={'main'} onClick={toggleItems}>
+        {selectItem && selectItem.title}
+      </span>
+      {active && (
+        <div className={'items'}>
+          {props.items.map((el) => (
+            <div key={el.value}>{el.title}</div>
+          ))}
+        </div>
       )}
     </div>
   );

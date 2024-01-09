@@ -1,18 +1,12 @@
-.select {
-  width: min-content;
-  padding: 10px;
-  background-color: silver;
-  border: 2px solid beige;
+.main {
+  border: 1px solid black;
+  display: inline-block;
+  min-height: 20px;
+  min-width: 45px;
 }
 
-.select div {
-  /* Ваши существующие стили для каждого элемента выпадающего списка */
-  cursor: pointer;
+.items {
+  position: absolute;
   padding: 5px;
-}
-
-.select div.selected {
-  /* Стили для выбранного элемента */
-  background-color: #a0d3e8;
-  color: #ffffff;
+  border: 1px solid black;
 }
