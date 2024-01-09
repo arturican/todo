@@ -10,3 +10,8 @@
   padding: 5px;
   border: 1px solid black;
 }
+
+.selected {
+  background-color: blue;
+  color: white;
+}
