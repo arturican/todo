@@ -1,4 +1,4 @@
-import React, { useState, KeyboardEvent, useEffect } from 'react';
+import React, { useState, KeyboardEvent, useEffect, SetStateAction, Dispatch } from 'react';
 import './Select.css';
 
 export type ItemType = {
@@ -9,7 +9,7 @@ export type ItemType = {
 export type SelectProps = {
   value: string | null;
   items: ItemType[];
-  onChange: (value: string | null) => void;
+  onChange: Dispatch<SetStateAction<string | null>>;
 };
 
 export const Select = (props: SelectProps) => {

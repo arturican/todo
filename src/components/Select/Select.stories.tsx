@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const SelectWithValue = () => {
-  const [value, setValue] = useState('2');
+  const [value, setValue] = useState<string | null>('2');
   return (
     <Select
       value={value}
@@ -28,7 +28,7 @@ const SelectWithValue = () => {
 };
 
 const SelectOutValue = () => {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState<string | null>(null);
   return (
     <Select
       value={value}
