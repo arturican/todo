@@ -4,7 +4,7 @@ type OnOffProps = {
   on?: boolean;
   onClick?: () => void;
 };
-export const OnOff = (props: OnOffProps) => {
+const OnOffMemo = (props: OnOffProps) => {
   const styleButtonOff = {
     border: '2px solid #ccc',
     margin: '10px',
@@ -46,3 +46,5 @@ export const OnOff = (props: OnOffProps) => {
     </div>
   );
 };
+
+export const OnOff = React.memo(OnOffMemo);

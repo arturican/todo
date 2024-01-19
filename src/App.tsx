@@ -6,6 +6,7 @@ import { OnOff } from './components/OnOff/OnOff';
 import { UncontrolOnOff } from './components/UncontrolOnOff/UncontrolOnOff';
 import { UncontrolAccordion } from './components/UncontrolAccordion/UncontrolAccordion';
 import { RatingValue, UncontrolRating } from './components/UncontrolRating/UncontrolRating';
+import { InputCheckbox } from './components/Input/Input.stories';
 
 export type PageTitleType = {
   title: string;
@@ -33,6 +34,7 @@ function App() {
       <UncontrolOnOff />
       <UncontrolAccordion title={'List'} />
       <UncontrolRating />
+      <InputCheckbox />
     </div>
   );
 }

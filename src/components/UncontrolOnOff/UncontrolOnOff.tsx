@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const UncontrolOnOff = () => {
+const UncontrolOnOffMemo = () => {
   const [on, setOn] = useState(false);
   const styleButtonOff = {
     border: '2px solid #ccc',
@@ -43,3 +43,5 @@ export const UncontrolOnOff = () => {
     </div>
   );
 };
+
+export const UncontrolOnOff = React.memo(UncontrolOnOffMemo);

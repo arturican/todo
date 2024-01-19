@@ -12,7 +12,7 @@ export type SelectProps = {
   onChange: Dispatch<SetStateAction<string | null>>;
 };
 
-export const Select = (props: SelectProps) => {
+const SelectMemo = (props: SelectProps) => {
   const [active, setActive] = useState(false);
   const [hoveredElement, setHoveredElement] = useState(props.value);
   const selectItem = props.items.find((el) => el.value === props.value);
@@ -69,3 +69,5 @@ export const Select = (props: SelectProps) => {
     </div>
   );
 };
+
+export const Select = React.memo(SelectMemo);

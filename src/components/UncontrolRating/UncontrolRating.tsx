@@ -8,7 +8,7 @@ export type StarType = {
   value: RatingValue;
 };
 
-export const UncontrolRating = () => {
+const UncontrolRatingMemo = () => {
   const [value, setValue] = useState<number>(0);
   console.log(value);
   return (
@@ -21,6 +21,9 @@ export const UncontrolRating = () => {
     </div>
   );
 };
-const Star = (props: StarType) => {
+export const UncontrolRating = React.memo(UncontrolRatingMemo);
+const StarMemo = (props: StarType) => {
   return <span onClick={() => props.setValue(props.value)}>{props.selected ? <b>star--</b> : 'star--'}</span>;
 };
+
+export const Star = React.memo(StarMemo);

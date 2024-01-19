@@ -7,6 +7,7 @@ const meta: Meta<typeof Rating> = {
   title: 'Rating',
   component: Rating,
   tags: ['autodocs'],
+  excludeStories: ['ModeRating'],
   // ...
 };
 export default meta;
@@ -18,12 +19,12 @@ export const Default: Story = {
   },
 };
 
-const ModeRating = () => {
+const ModeRatingMemo = () => {
   const [value, setValue] = useState<RatingValue>(0);
 
   return <Rating value={value} callBack={setValue} />;
 };
-
+export const ModeRating = React.memo(ModeRatingMemo);
 export const UncontrolRating: Story = {
   render: () => <ModeRating />,
 };

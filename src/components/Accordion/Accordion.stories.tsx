@@ -31,7 +31,7 @@ export const Uncollapsed: Story = {
   },
 };
 
-const ModeRating = () => {
+const ModeRatingMemo = () => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Accordion
@@ -47,6 +47,7 @@ const ModeRating = () => {
   );
 };
 
+const ModeRating = React.memo(ModeRatingMemo);
 export const UncontrolRating: Story = {
   render: () => <ModeRating />,
 };

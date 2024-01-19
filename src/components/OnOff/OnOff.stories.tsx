@@ -6,6 +6,7 @@ const meta: Meta<typeof OnOff> = {
   title: 'OnOff',
   component: OnOff,
   tags: ['autodocs'],
+  excludeStories: ['ModeChangeOnOff'],
   // ...
 };
 export default meta;
@@ -23,13 +24,14 @@ export const OffMode: Story = {
   },
 };
 
-const ModeChangeOnOff = () => {
+const ModeChangeOnOffMemo = () => {
   const [on, setOn] = useState(false);
   const onClickHandler = () => {
     setOn(!on);
   };
   return <OnOff on={on} onClick={onClickHandler} />;
 };
+export const ModeChangeOnOff = React.memo(ModeChangeOnOffMemo);
 
 export const ModeChange: Story = {
   render: () => <ModeChangeOnOff />,

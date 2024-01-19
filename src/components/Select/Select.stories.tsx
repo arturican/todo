@@ -7,12 +7,13 @@ const meta: Meta<typeof Select> = {
   title: 'Select',
   component: Select,
   tags: ['autodocs'],
+  excludeStories: ['SelectWithValue', 'SelectOutValue'],
   // ...
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const SelectWithValue = () => {
+const SelectWithValueMemo = () => {
   const [value, setValue] = useState<string | null>('2');
   return (
     <Select
@@ -26,8 +27,9 @@ const SelectWithValue = () => {
     />
   );
 };
+export const SelectWithValue = React.memo(SelectWithValueMemo);
 
-const SelectOutValue = () => {
+const SelectOutValueMemo = () => {
   const [value, setValue] = useState<string | null>(null);
   return (
     <Select
@@ -41,6 +43,8 @@ const SelectOutValue = () => {
     />
   );
 };
+
+export const SelectOutValue = React.memo(SelectOutValueMemo);
 
 export const WithValue: Story = {
   render: () => <SelectWithValue />,

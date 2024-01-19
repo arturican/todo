@@ -7,7 +7,7 @@ type AccordionTitleType = {
   title: string;
   onClick: () => void;
 };
-export const UncontrolAccordion = (props: Accordion) => {
+const UncontrolAccordionMemo = (props: Accordion) => {
   const [collapsed, setCollapsed] = useState(false);
   console.log(collapsed);
   return (
@@ -17,10 +17,13 @@ export const UncontrolAccordion = (props: Accordion) => {
     </div>
   );
 };
-const AccordionTitle = (props: AccordionTitleType) => {
+
+export const UncontrolAccordion = React.memo(UncontrolAccordionMemo);
+const AccordionTitleMemo = (props: AccordionTitleType) => {
   return <h3 onClick={() => props.onClick()}>{props.title}</h3>;
 };
-const AccordionBody = () => {
+export const AccordionTitle = React.memo(AccordionTitleMemo);
+const AccordionBodyMemo = () => {
   return (
     <ul>
       <li>1</li>
@@ -29,3 +32,5 @@ const AccordionBody = () => {
     </ul>
   );
 };
+
+export const AccordionBody = React.memo(AccordionBodyMemo);

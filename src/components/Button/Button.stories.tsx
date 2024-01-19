@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Button>;
  * Example Button story with React Hooks.
  * See note below related to this example.
  */
-const ButtonWithHooks = () => {
+const ButtonWithHooksMemo = () => {
   // Sets the hooks for both the label and primary props
   const [value, setValue] = useState('Secondary');
   const [isPrimary, setIsPrimary] = useState(false);
@@ -30,6 +30,8 @@ const ButtonWithHooks = () => {
   };
   return <Button primary={isPrimary} onClick={handleOnChange} label={value} />;
 };
+
+const ButtonWithHooks = React.memo(ButtonWithHooksMemo);
 
 export const Primary: Story = {
   render: () => <ButtonWithHooks />,
