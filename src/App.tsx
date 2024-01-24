@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import './App.css';
-import { Todolist } from './components/Todolist';
+import { TaskType, Todolist } from './components/Todolist';
 import { v1 } from 'uuid';
 import { AddItemForm } from './components/AddItemForm';
 import {
@@ -8,7 +8,6 @@ import {
   addTodolistTaskAC,
   changeTaskStatusAC,
   removeTaskAC,
-  removeTodolistTaskAC,
   tasksReducer,
   updateTaskAC,
 } from './reducers/tasksReducer';
@@ -26,31 +25,18 @@ export type TodolistsProps = {
   title: string;
   filter: TaskFilter;
 };
+export type TasksStateType = {
+  [key: string]: TaskType[];
+};
 
 function App() {
   const todolistID1 = v1();
   const todolistID2 = v1();
 
-  /*  const [todolists, setTodolists] = useState<Array<TodolistsProps>>([
-    { id: todolistID1, title: 'What to learn', filter: 'all' },
-    { id: todolistID2, title: 'What to buy', filter: 'all' },
-  ]);*/
   const [todolists, dispatchTodolists] = useReducer(todolistReducer, [
     { id: todolistID1, title: 'What to learn', filter: 'all' },
     { id: todolistID2, title: 'What to buy', filter: 'all' },
   ]);
-
-  /*const [tasks, setTasks] = useState({
-    [todolistID1]: [
-      { id: v1(), title: 'HTML&CSS', isDone: true },
-      { id: v1(), title: 'JS', isDone: true },
-      { id: v1(), title: 'ReactJS', isDone: false },
-    ],
-    [todolistID2]: [
-      { id: v1(), title: 'Rest API', isDone: true },
-      { id: v1(), title: 'GraphQL', isDone: false },
-    ],
-  });*/
 
   const [tasks, dispatchTasks] = useReducer(tasksReducer, {
     [todolistID1]: [
@@ -73,7 +59,6 @@ function App() {
   const removeTodolist = (id: string) => {
     dispatchTodolists(removeTodolistAC(id));
     delete tasks[id];
-    dispatchTasks(removeTodolistTaskAC());
   };
 
   function taskFilter(tlId: string, value: TaskFilter) {

@@ -44,19 +44,20 @@ export function Todolist(props: TodolistProps) {
       </div>
       <AddItemForm callBack={addTask} />
       <ul>
-        {props.tasks.map((t) => (
-          <li key={t.id}>
-            <input type="checkbox" checked={t.isDone} onClick={() => onTaskStatusChange(props.id, t.id, t.isDone)} />
-            <EditSpan title={t.title} callBack={(title) => onChangeTitleTask(props.id, t.id, title)} />
-            <button
-              onClick={() => {
-                props.removeTask(props.id, t.id);
-              }}
-            >
-              x
-            </button>
-          </li>
-        ))}
+        {props.tasks &&
+          props.tasks.map((t) => (
+            <li key={t.id}>
+              <input type="checkbox" checked={t.isDone} onClick={() => onTaskStatusChange(props.id, t.id, t.isDone)} />
+              <EditSpan title={t.title} callBack={(title) => onChangeTitleTask(props.id, t.id, title)} />
+              <button
+                onClick={() => {
+                  props.removeTask(props.id, t.id);
+                }}
+              >
+                x
+              </button>
+            </li>
+          ))}
       </ul>
       <div>
         <button

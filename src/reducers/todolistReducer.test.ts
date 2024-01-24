@@ -1,40 +1,74 @@
-import { todolistReducer, taskFilterAC, removeTodolistAC, updateTodolistAC, addTodolistAC } from './todolistReducer'; // Update this import path accordingly
-import { TodolistsProps } from '../App';
+import { addTodolistAC, removeTodolistAC, taskFilterAC, todolistReducer, updateTodolistAC } from './todolistReducer';
+import { v1 } from 'uuid';
+import { TaskFilter, TodolistsProps } from '../App';
+test('correct todolist should be removed', () => {
+  const todolistId1 = v1();
+  const todolistId2 = v1();
 
-describe('todolistReducer', () => {
-  test('should handle TASK-FILTER action', () => {
-    const initialState: TodolistsProps[] = [{ id: '1', title: 'List 1', filter: 'all' }];
-    const action = taskFilterAC('1', 'completed');
+  const startState: Array<TodolistsProps> = [
+    { id: todolistId1, title: 'What to learn', filter: 'all' },
+    { id: todolistId2, title: 'What to buy', filter: 'all' },
+  ];
 
-    const newState = todolistReducer(initialState, action);
+  const endState = todolistReducer(startState, removeTodolistAC(todolistId1));
 
-    expect(newState[0].filter).toBe('completed');
-  });
+  expect(endState.length).toBe(1);
+  expect(endState[0].id).toBe(todolistId2);
+});
 
-  test('should handle REMOVE-TODOLIST action', () => {
-    const initialState: TodolistsProps[] = [{ id: '1', title: 'List 1', filter: 'all' }];
-    const action = removeTodolistAC('1');
+test('correct todolist should be added', () => {
+  const todolistId1 = v1();
+  const todolistId2 = v1();
 
-    const newState = todolistReducer(initialState, action);
+  const newTodolistTitle = 'New Todolist';
 
-    expect(newState).toEqual([]);
-  });
+  const startState: Array<TodolistsProps> = [
+    { id: todolistId1, title: 'What to learn', filter: 'all' },
+    { id: todolistId2, title: 'What to buy', filter: 'all' },
+  ];
 
-  test('should handle UPDATE-TODOLIST action', () => {
-    const initialState: TodolistsProps[] = [{ id: '1', title: 'List 1', filter: 'all' }];
-    const action = updateTodolistAC('1', 'New Title');
+  const endState = todolistReducer(startState, addTodolistAC(v1(), newTodolistTitle));
 
-    const newState = todolistReducer(initialState, action);
+  expect(endState.length).toBe(3);
+  expect(endState[2].title).toBe(newTodolistTitle);
+  expect(endState[2].filter).toBe('all');
+  expect(endState[2].id).toBeDefined();
+});
 
-    expect(newState[0].title).toBe('New Title');
-  });
+test('correct todolist should change its name', () => {
+  const todolistId1 = v1();
+  const todolistId2 = v1();
 
-  test('should handle ADD-TODOLIST action', () => {
-    const initialState: TodolistsProps[] = [];
-    const action = addTodolistAC('1', 'New List');
+  const newTodolistTitle = 'New Todolist';
 
-    const newState = todolistReducer(initialState, action);
+  const startState: Array<TodolistsProps> = [
+    { id: todolistId1, title: 'What to learn', filter: 'all' },
+    { id: todolistId2, title: 'What to buy', filter: 'all' },
+  ];
 
-    expect(newState).toEqual([{ id: '1', title: 'New List', filter: 'all' }]);
-  });
+  const action = updateTodolistAC(todolistId2, newTodolistTitle);
+
+  const endState = todolistReducer(startState, action);
+
+  expect(endState[0].title).toBe('What to learn');
+  expect(endState[1].title).toBe(newTodolistTitle);
+});
+
+test('correct filter of todolist should be changed', () => {
+  const todolistId1 = v1();
+  const todolistId2 = v1();
+
+  const newFilter: TaskFilter = 'completed';
+
+  const startState: Array<TodolistsProps> = [
+    { id: todolistId1, title: 'What to learn', filter: 'all' },
+    { id: todolistId2, title: 'What to buy', filter: 'all' },
+  ];
+
+  const action = taskFilterAC(todolistId2, newFilter);
+
+  const endState = todolistReducer(startState, action);
+
+  expect(endState[0].filter).toBe('all');
+  expect(endState[1].filter).toBe(newFilter);
 });
