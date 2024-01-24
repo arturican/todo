@@ -2,6 +2,8 @@ import React from 'react';
 import { TaskFilter } from '../App';
 import { AddItemForm } from './AddItemForm';
 import { EditSpan } from './EditSpan';
+import { Button, IconButton } from '@mui/material';
+import { Delete } from '@mui/icons-material';
 
 export type TaskType = {
   id: string;
@@ -40,7 +42,10 @@ export function Todolist(props: TodolistProps) {
         <h3>
           <EditSpan title={props.title} callBack={(title) => onChangeTitleTodolist(props.id, title)} />
         </h3>
-        <button onClick={() => props.removeTodolist(props.id)}>x</button>
+        {/*<button onClick={() => props.removeTodolist(props.id)}>x</button>*/}
+        <IconButton onClick={() => props.removeTodolist(props.id)}>
+          <Delete />
+        </IconButton>
       </div>
       <AddItemForm callBack={addTask} />
       <ul>
@@ -49,35 +54,45 @@ export function Todolist(props: TodolistProps) {
             <li key={t.id}>
               <input type="checkbox" checked={t.isDone} onClick={() => onTaskStatusChange(props.id, t.id, t.isDone)} />
               <EditSpan title={t.title} callBack={(title) => onChangeTitleTask(props.id, t.id, title)} />
-              <button
+              {/*<button
                 onClick={() => {
                   props.removeTask(props.id, t.id);
                 }}
               >
                 x
-              </button>
+              </button>*/}
+              <IconButton
+                onClick={() => {
+                  props.removeTask(props.id, t.id);
+                }}
+              >
+                <Delete />
+              </IconButton>
             </li>
           ))}
       </ul>
       <div>
-        <button
+        <Button
           onClick={() => props.taskFilter(props.id, 'all')}
-          className={props.filter === 'all' ? 'active-filter' : ''}
+          variant={props.filter === 'all' ? 'outlined' : 'text'}
+          color="inherit"
         >
           All
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => props.taskFilter(props.id, 'active')}
-          className={props.filter === 'active' ? 'active-filter' : ''}
+          variant={props.filter === 'active' ? 'outlined' : 'text'}
+          color="primary"
         >
           Active
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => props.taskFilter(props.id, 'completed')}
-          className={props.filter === 'completed' ? 'active-filter' : ''}
+          variant={props.filter === 'completed' ? 'outlined' : 'text'}
+          color="secondary"
         >
           Completed
-        </button>
+        </Button>
       </div>
     </div>
   );
