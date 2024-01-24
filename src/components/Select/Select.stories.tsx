@@ -36,7 +36,7 @@ const SelectWithValueMemo = () => {
         while (fake < 10000000) {
           fake++;
           const fakeValue = Math.random();
-          return fakeValue;
+          console.log(fakeValue);
         }
       }
     }
