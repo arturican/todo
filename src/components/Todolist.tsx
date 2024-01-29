@@ -1,5 +1,5 @@
 import React from 'react';
-import { TaskFilter } from '../App';
+import { TaskFilter } from '../AppWithReducer';
 import { AddItemForm } from './AddItemForm';
 import { EditSpan } from './EditSpan';
 

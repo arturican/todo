@@ -3,14 +3,7 @@ import './App.css';
 import { TaskType, Todolist } from './components/Todolist';
 import { v1 } from 'uuid';
 import { AddItemForm } from './components/AddItemForm';
-import {
-  addTaskAC,
-  addTodolistTaskAC,
-  changeTaskStatusAC,
-  removeTaskAC,
-  tasksReducer,
-  updateTaskAC,
-} from './reducers/tasksReducer';
+import { addTaskAC, changeTaskStatusAC, removeTaskAC, tasksReducer, updateTaskAC } from './reducers/tasksReducer';
 import {
   addTodolistAC,
   removeTodolistAC,
@@ -29,7 +22,7 @@ export type TasksStateType = {
   [key: string]: TaskType[];
 };
 
-function App() {
+function AppWithReducer() {
   const todolistID1 = v1();
   const todolistID2 = v1();
 
@@ -51,14 +44,13 @@ function App() {
   });
 
   function removeTask(tlId: string, id: string) {
-    /*const filteredTasks = tasks.filter((t) => t.id !== id);
-            setTasks(filteredTasks);*/
     dispatchTasks(removeTaskAC(tlId, id));
   }
 
   const removeTodolist = (id: string) => {
-    dispatchTodolists(removeTodolistAC(id));
-    delete tasks[id];
+    const action = removeTodolistAC(id);
+    dispatchTodolists(action);
+    dispatchTasks(action);
   };
 
   function taskFilter(tlId: string, value: TaskFilter) {
@@ -66,18 +58,16 @@ function App() {
   }
 
   const addTask = (tlId: string, title: string) => {
-    /*setTasks([...tasks, { id: v1(), title: title, isDone: false }]);*/
     dispatchTasks(addTaskAC(tlId, title));
   };
   const changeTaskStatus = (tlId: string, id: string, isDone: boolean) => {
-    /*setTasks(tasks.map((t) => (t.id === id ? { ...t, isDone: isDone } : t)));*/
     dispatchTasks(changeTaskStatusAC(tlId, id, isDone));
   };
 
   const addTodolist = (title: string) => {
-    const todolistId = v1();
-    dispatchTodolists(addTodolistAC(todolistId, title));
-    dispatchTasks(addTodolistTaskAC(todolistId));
+    const action = addTodolistAC(title);
+    dispatchTodolists(action);
+    dispatchTasks(action);
   };
 
   const updateTodolist = (tlId: string, title: string) => {
@@ -122,4 +112,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppWithReducer;

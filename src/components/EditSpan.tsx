@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
+import { TextField } from '@mui/material';
 
 export type EditSpanProps = {
   title: string;
@@ -19,7 +20,7 @@ export const EditSpan = (props: EditSpanProps) => {
   const updateTask = () => props.callBack(title);
 
   return mode ? (
-    <input value={title} onBlur={editMode} autoFocus onChange={editTitle} />
+    <TextField color="primary" value={title} onBlur={editMode} autoFocus onChange={editTitle} />
   ) : (
     <span onDoubleClick={editMode}>{props.title}</span>
   );
