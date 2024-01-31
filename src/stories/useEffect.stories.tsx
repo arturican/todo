@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 export default {
   title: 'useEffect',
 };
@@ -29,6 +30,29 @@ export const Example = () => {
       Hello {counter} {fake}
       <button onClick={() => setCounter(counter + 1)}>+</button>
       <button onClick={() => setFake(fake + 1)}>+</button>
+    </>
+  );
+};
+export const SetTimeOutExample = () => {
+  const [counter, setCounter] = useState(1);
+
+  console.log('Example');
+
+  useEffect(() => {
+    setInterval(() => {
+      setCounter((state) => state + 1);
+    }, 1000);
+  });
+
+  useEffect(() => {}, []);
+
+  const a = new Date().getHours();
+  const b = new Date().getMinutes();
+  const c = new Date().getSeconds();
+
+  return (
+    <>
+      {a}:{b}:{c} ___ {counter}
     </>
   );
 };
