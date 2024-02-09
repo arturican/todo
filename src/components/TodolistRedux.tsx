@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { TaskFilter } from '../AppWithReducer';
 import { AddItemForm } from './AddItemForm';
 import { EditSpan } from './EditSpan';
@@ -19,7 +19,8 @@ type TodolistProps = {
   filter: TaskFilter;
 };
 
-export function TodolistRedux(props: TodolistProps) {
+const TodolistReduxMemo = (props: TodolistProps) => {
+  console.log('TodolistRedux');
   const tasks = useSelector<AppRootStateType, TaskType[]>((state) => state.tasks[props.id]);
   const dispatch = useDispatch();
   const allTodolist = tasks;
@@ -44,9 +45,12 @@ export function TodolistRedux(props: TodolistProps) {
     dispatch(changeTaskStatusAC(props.id, id, isDone));
   };
 
-  const addTask = (title: string) => {
-    dispatch(addTaskAC(props.id, title));
-  };
+  const addTask = useCallback(
+    (title: string) => {
+      dispatch(addTaskAC(props.id, title));
+    },
+    [dispatch]
+  );
   const updateTodolist = (title: string) => {
     dispatch(updateTodolistAC(props.id, title));
   };
@@ -94,4 +98,5 @@ export function TodolistRedux(props: TodolistProps) {
       </div>
     </div>
   );
-}
+};
+export const TodolistRedux = memo(TodolistReduxMemo);
