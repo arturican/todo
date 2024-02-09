@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { TaskFilter } from '../AppWithReducer';
 import { AddItemForm } from './AddItemForm';
 import { EditSpan } from './EditSpan';
@@ -20,18 +20,22 @@ type TodolistProps = {
 };
 
 const TodolistReduxMemo = (props: TodolistProps) => {
-  console.log('TodolistRedux');
-  const tasks = useSelector<AppRootStateType, TaskType[]>((state) => state.tasks[props.id]);
+  let tasks = useSelector<AppRootStateType, TaskType[]>((state) => state.tasks[props.id]);
   const dispatch = useDispatch();
   const allTodolist = tasks;
   let tasksForTodolist = allTodolist;
 
-  if (props.filter === 'active') {
-    tasksForTodolist = allTodolist.filter((task) => !task.isDone);
-  }
-  if (props.filter === 'completed') {
-    tasksForTodolist = allTodolist.filter((task) => task.isDone);
-  }
+  tasks = useMemo(() => {
+    console.log('useMemo');
+    if (props.filter === 'active') {
+      tasksForTodolist = allTodolist.filter((task) => !task.isDone);
+    }
+    if (props.filter === 'completed') {
+      tasksForTodolist = allTodolist.filter((task) => task.isDone);
+    }
+    return tasks;
+  }, [props.filter]);
+
   const removeTask = (id: string) => {
     dispatch(removeTaskAC(props.id, id));
   };
@@ -51,12 +55,18 @@ const TodolistReduxMemo = (props: TodolistProps) => {
     },
     [dispatch]
   );
-  const updateTodolist = (title: string) => {
-    dispatch(updateTodolistAC(props.id, title));
-  };
-  const updateTask = (taskId: string, title: string) => {
-    dispatch(updateTaskAC(props.id, taskId, title));
-  };
+  const updateTodolist = useCallback(
+    (title: string) => {
+      dispatch(updateTodolistAC(props.id, title));
+    },
+    [dispatch, props.id]
+  );
+  const updateTask = useCallback(
+    (taskId: string, title: string) => {
+      dispatch(updateTaskAC(props.id, taskId, title));
+    },
+    [dispatch, props.id]
+  );
   return (
     <div>
       <div className={'todo-title'}>
