@@ -1,0 +1,12 @@
+.digital-clock {
+  font-family: 'Segment7', monospace; /* Используйте шрифт, имитирующий цифровые часы, если доступен */
+  color: #2ecc71; /* Яркий зеленый для легкого чтения, можно выбрать любой цвет */
+  background-color: #333; /* Темный фон для контраста */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-size: 2em; /* Увеличенный размер шрифта для лучшего чтения */
+  text-align: center; /* Центрирование текста */
+  align-self: center;
+  animation: blink 1s infinite;
+}

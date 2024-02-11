@@ -1,0 +1,71 @@
+.clock {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  background-color: #333;
+  border-radius: 10px;
+  transform-origin: 50% 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.3, 1);
+}
+
+.hour {
+  width: 8px;
+  height: 60px;
+  background-color: #333;
+}
+
+.minute {
+  width: 4px;
+  height: 80px;
+  background-color: #666;
+}
+
+.second {
+  width: 2px;
+  height: 100px;
+  background-color: #d33; /* A bright red for the second hand */
+}
+
+.center-point {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #333;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.number {
+  position: absolute;
+  font-family: 'Arial', sans-serif; /* Или любой другой предпочтительный шрифт */
+  font-size: 16px; /* Размер шрифта для цифр */
+  color: #333; /* Цвет текста, совпадает с цветом стрелок */
+  transform: translate(-50%, -50%); /* Центрирование текста относительно его позиции */
+  user-select: none; /* Предотвращает выделение текста при двойном клике */
+}
+
+/* Дополнительные стили для улучшения видимости и эстетики */
+.clock::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #333;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Чтобы точка была над стрелками, но под цифрами */
+}

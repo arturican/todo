@@ -1,7 +1,39 @@
 {
-  "plugins": ["stylelint-prettier"],
-  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended", "stylelint-config-css-modules"],
+  "plugins": [
+    "stylelint-prettier"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-prettier/recommended",
+    "stylelint-config-css-modules",
+    "stylelint-config-rational-order"
+  ],
   "rules": {
-    "prettier/prettier": true
+    "prettier/prettier": true,
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-order": [],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["composes"]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["extends", "tailwind"]
+      }
+    ],
+    "no-empty-source": null,
+    "no-descending-specificity": null
   }
 }
