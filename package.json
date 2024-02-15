@@ -35,7 +35,9 @@
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "lint:css:fix": "stylelint './**/*.css' --fix"
+    "lint:css:fix": "stylelint './**/*.css' --fix",
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +58,15 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.16",
+    "@storybook/addon-interactions": "^7.6.16",
+    "@storybook/addon-links": "^7.6.16",
+    "@storybook/addon-onboarding": "^1.0.11",
+    "@storybook/blocks": "^7.6.16",
+    "@storybook/preset-create-react-app": "^7.6.16",
+    "@storybook/react": "^7.6.16",
+    "@storybook/react-webpack5": "^7.6.16",
+    "@storybook/test": "^7.6.16",
     "@types/react-redux": "^7.1.33",
     "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -64,10 +75,14 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
-    "husky": "^8.0.3",
+    "eslint-plugin-storybook": "^0.6.15",
+    "husky": "^8.0.0",
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
-    "stylelint-config-css-modules": "^4.3.0"
+    "prop-types": "^15.8.1",
+    "storybook": "^7.6.16",
+    "stylelint-config-css-modules": "^4.3.0",
+    "webpack": "^5.90.1"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": "yarn lint",

@@ -1,7 +1,16 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
-  "extends": ["prettier", "eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended"
+  ],
   "env": {
     "es6": true,
     "browser": true,
