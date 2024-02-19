@@ -2,11 +2,11 @@ import React, { ChangeEvent, useState } from 'react';
 import { TextField } from '@mui/material';
 
 export type EditSpanProps = {
-  title: string;
-  callBack: (title: string) => void;
+  value: string;
+  onChange: (title: string) => void;
 };
 export const EditSpan = (props: EditSpanProps) => {
-  const [title, setTitle] = useState(props.title);
+  const [title, setTitle] = useState(props.value);
   const [mode, setMode] = useState(false);
   const editMode = () => {
     setMode(!mode);
@@ -17,11 +17,11 @@ export const EditSpan = (props: EditSpanProps) => {
     setTitle(e.currentTarget.value);
   };
 
-  const updateTask = () => props.callBack(title);
+  const updateTask = () => props.onChange(title);
 
   return mode ? (
     <TextField color="primary" value={title} onBlur={editMode} autoFocus onChange={editTitle} />
   ) : (
-    <span onDoubleClick={editMode}>{props.title}</span>
+    <span onDoubleClick={editMode}>{props.value}</span>
   );
 };
