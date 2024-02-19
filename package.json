@@ -36,8 +36,8 @@
     "format": "prettier --write .",
     "prepare": "husky install",
     "lint:css:fix": "stylelint './**/*.css' --fix",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "sb dev -p 9009",
+    "build-storybook": "sb build"
   },
   "eslintConfig": {
     "extends": [
