@@ -1,5 +1,6 @@
+import TextField from '@mui/material/TextField/TextField';
 import React, { ChangeEvent, KeyboardEvent, memo, useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { AddBox } from '@mui/icons-material';
 
 export type AddItemFormProps = {
@@ -25,17 +26,18 @@ const AddItemFormMemo = (props: AddItemFormProps) => {
   };
   return (
     <div>
-      <TextField variant="outlined" value={title} onChange={onTaskTitleChange} onKeyPress={onTaskTitleKeyPress} />
-      {/*<button onClick={onAddTaskButtonClick}>+</button>*/}
-      <Button
-        variant={'contained'}
-        color={'primary'}
-        style={{ maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px' }}
-        onClick={onAddTaskButtonClick}
-      >
+      <TextField
+        variant="outlined"
+        error={!!error}
+        value={title}
+        onChange={onTaskTitleChange}
+        onKeyPress={onTaskTitleKeyPress}
+        label="Title"
+        helperText={error}
+      />
+      <IconButton color="primary" onClick={onAddTaskButtonClick}>
         <AddBox />
-      </Button>
-      {error && <div className={error ? 'error-message' : ''}>{error}</div>}
+      </IconButton>
     </div>
   );
 };
