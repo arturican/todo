@@ -30,7 +30,6 @@ export const TaskWithRedux = ({ task, todolistID }: Props) => {
   return (
     <div className={task.isDone ? 'is-done' : ''}>
       <Checkbox checked={task.isDone} color="primary" onChange={onChangeHandler} />
-
       <EditSpan value={task.title} onChange={onTitleChangeHandler} />
       <IconButton onClick={onClickHandler}>
         <Delete />
