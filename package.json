@@ -36,8 +36,10 @@
     "format": "prettier --write .",
     "prepare": "husky install",
     "lint:css:fix": "stylelint './**/*.css' --fix",
-    "storybook": "sb dev -p 9009",
-    "build-storybook": "sb build"
+    "storybook": "storybook dev -p 9009",
+    "build-storybook": "storybook build",
+    "jest:integration": "jest -c integration/jest.config.js",
+    "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration"
   },
   "eslintConfig": {
     "extends": [
@@ -58,16 +60,16 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.16",
-    "@storybook/addon-interactions": "^7.6.16",
-    "@storybook/addon-links": "^7.6.16",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
     "@storybook/addon-onboarding": "^1.0.11",
-    "@storybook/blocks": "^7.6.16",
-    "@storybook/cli": "^7.6.16",
-    "@storybook/preset-create-react-app": "^7.6.16",
-    "@storybook/react": "^7.6.16",
-    "@storybook/react-webpack5": "^7.6.16",
-    "@storybook/test": "^7.6.16",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/cli": "^7.6.17",
+    "@storybook/preset-create-react-app": "^7.6.17",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-webpack5": "^7.6.17",
+    "@storybook/test": "^7.6.17",
     "@types/react-redux": "^7.1.33",
     "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -87,7 +89,7 @@
     "prop-types": "^15.8.1",
     "puppeteer": "^22.3.0",
     "start-server-and-test": "^2.0.3",
-    "storybook": "^7.6.16",
+    "storybook": "^7.6.17",
     "stylelint-config-css-modules": "^4.3.0",
     "webpack": "^5.90.1"
   },
