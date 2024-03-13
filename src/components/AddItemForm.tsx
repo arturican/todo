@@ -36,7 +36,8 @@ const AddItemFormMemo = (props: AddItemFormProps) => {
         helperText={error}
       />
       <IconButton color="primary" onClick={onAddTaskButtonClick}>
-        <AddBox /> !!!
+        <AddBox />
+        asdasdad
       </IconButton>
     </div>
   );
