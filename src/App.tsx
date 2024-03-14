@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Cont } from './components/Counter/Cont';
 import { Setting } from './components/Setting/Setting';
@@ -13,26 +13,6 @@ export const App = () => {
     setMinValue(minValue);
     setNumber(minValue);
   };
-
-  useEffect(() => {
-    const maxValue = localStorage.getItem('maxValue');
-    if (maxValue) {
-      setMaxValue(JSON.parse(maxValue));
-    }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('maxValue', JSON.stringify(maxValue));
-  }, [maxValue]);
-
-  useEffect(() => {
-    const minValue = localStorage.getItem('minValue');
-    if (minValue) {
-      setMinValue(JSON.parse(minValue));
-    }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('minValue', JSON.stringify(minValue));
-  }, [minValue]);
   return (
     <div className="wrapper">
       <Cont minValue={minValue} maxValue={maxValue} number={number} setNumber={setNumber} />

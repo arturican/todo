@@ -20,7 +20,10 @@ export const Setting = (props: SettingProps) => {
             <span>max value : </span> <Input value={props.maxValue} setValue={props.setMaxValue} />
           </div>
         ) : (
-          <span className={'error'}>Ошибка start value больше max value </span>
+          <div className={'span-input'}>
+            <span className={'error'}>Ошибка start value больше или равно max value </span>
+            <Input value={props.maxValue} setValue={props.setMaxValue} />
+          </div>
         )}
         {props.minValue < 0 ? (
           <div className={'span-input'}>
