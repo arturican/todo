@@ -1,28 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { Cont } from './components/Counter/Cont';
 import { Setting } from './components/Setting/Setting';
+import { useSelector } from 'react-redux';
 
 export const App = () => {
-  const [maxValue, setMaxValue] = useState(0);
-  const [minValue, setMinValue] = useState(0);
-  const [number, setNumber] = useState(0);
+  const maxValue = useSelector((state) => state.counter.maxValue);
+  const minValue = useSelector((state) => state.counter.minValue);
+  const number = useSelector((state) => state.counter.number);
 
   const setValue = () => {
-    setMaxValue(maxValue);
-    setMinValue(minValue);
-    setNumber(minValue);
+    console.log('lol');
   };
   return (
     <div className="wrapper">
-      <Cont minValue={minValue} maxValue={maxValue} number={number} setNumber={setNumber} />
-      <Setting
-        maxValue={maxValue}
-        minValue={minValue}
-        setMaxValue={setMaxValue}
-        setMinValue={setMinValue}
-        callBack={setValue}
-      />
+      <Cont minValue={minValue} maxValue={maxValue} number={number} />
+      <Setting maxValue={maxValue} minValue={minValue} callBack={setValue} />
     </div>
   );
 };

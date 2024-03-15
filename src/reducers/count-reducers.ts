@@ -6,7 +6,7 @@ const initialState = {
 
 type ActionType = IncrementCountType | ResetCountType;
 
-type StateType = {
+export type StateType = {
   number: number;
   maxValue: number;
   minValue: number;
