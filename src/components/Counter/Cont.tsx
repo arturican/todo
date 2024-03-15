@@ -2,7 +2,7 @@ import React from 'react';
 import { Number } from '../Number/Number';
 import { Button } from '../Button/Button';
 import { useDispatch } from 'react-redux';
-import { incrementCount, initialState, resetCount } from '../../reducers/count-reducers';
+import { incrementCount, resetCount } from '../../reducers/count-reducers';
 
 type ContProps = {
   number: number;
@@ -29,4 +29,3 @@ export const Cont = (props: ContProps) => {
     </div>
   );
 };
-console.log(initialState);

@@ -8,12 +8,8 @@ import { changeValueMax, changeValueMin } from '../../reducers/count-reducers';
 type SettingProps = {
   maxValue: number;
   minValue: number;
+  callBack: () => void;
 };
-
-const callBack = () => {
-  alert('set');
-};
-
 export const Setting = (props: SettingProps) => {
   const dispatch = useDispatch();
   return (
@@ -41,7 +37,7 @@ export const Setting = (props: SettingProps) => {
         )}
       </div>
       <div className={'counter-button'}>
-        <Button title={'set'} callBack={callBack} />
+        <Button title={'set'} callBack={props.callBack} />
       </div>
     </div>
   );
