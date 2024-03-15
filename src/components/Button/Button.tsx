@@ -8,11 +8,11 @@ type ButtonProps = {
   number?: number;
 };
 export const Button = (props: ButtonProps) => {
-  const counterPlus = () => {
+  const callBack = () => {
     props.callBack();
   };
   return (
-    <button className={props.disabled ? 'disabled' : 'button'} onClick={counterPlus} disabled={props.disabled}>
+    <button className={props.disabled ? 'disabled' : 'button'} onClick={callBack} disabled={props.disabled}>
       {props.title}
     </button>
   );

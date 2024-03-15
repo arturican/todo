@@ -6,9 +6,10 @@ import './Setting.css';
 type SettingProps = {
   maxValue: number;
   minValue: number;
-  setMaxValue: (value: number) => void;
-  setMinValue: (value: number) => void;
-  callBack: () => void;
+};
+
+const callBack = () => {
+  alert('set');
 };
 
 export const Setting = (props: SettingProps) => {
@@ -17,27 +18,27 @@ export const Setting = (props: SettingProps) => {
       <div className={'counter-input'}>
         {props.maxValue > props.minValue ? (
           <div className={'span-input'}>
-            <span>max value : </span> <Input value={props.maxValue} setValue={props.setMaxValue} />
+            <span>max value : </span> <Input value={props.maxValue} />
           </div>
         ) : (
           <div className={'span-input'}>
             <span className={'error'}>Ошибка start value больше или равно max value </span>
-            <Input value={props.maxValue} setValue={props.setMaxValue} />
+            <Input value={props.maxValue} />
           </div>
         )}
         {props.minValue < 0 ? (
           <div className={'span-input'}>
             <span className={'error'}>start value меньше нуля</span>
-            <Input value={props.minValue} setValue={props.setMinValue} />
+            <Input value={props.minValue} />
           </div>
         ) : (
           <div className={'span-input'}>
-            <span>start value :</span> <Input value={props.minValue} setValue={props.setMinValue} />
+            <span>start value :</span> <Input value={props.minValue} />
           </div>
         )}
       </div>
       <div className={'counter-button'}>
-        <Button title={'set'} callBack={props.callBack} />
+        <Button title={'set'} callBack={callBack} />
       </div>
     </div>
   );

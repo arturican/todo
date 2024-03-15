@@ -1,6 +1,6 @@
-const initialState = {
+export const initialState = {
   number: 0,
-  maxValue: 0,
+  maxValue: 10,
   minValue: 0,
 };
 
@@ -15,9 +15,9 @@ export type StateType = {
 export const countReducer = (state: StateType = initialState, action: ActionType): StateType => {
   switch (action.type) {
     case 'INCREMENT':
-      return { ...state, minValue: state.minValue + 1 };
+      return { ...state, number: state.number + 1 };
     case 'RESET': {
-      return { ...state, minValue: state.minValue };
+      return { ...state, number: state.minValue };
     }
     default: {
       return state;
