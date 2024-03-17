@@ -33,20 +33,11 @@ export const countReducer = (state: StateType = initialState, action: ActionType
       return { ...state, minValue: action.payload };
     }
     case 'SET-MAX-VALUE':
-      return {
-        ...state,
-        maxValue: action.payload,
-      };
+      return { ...state, maxValue: action.payload };
     case 'SET-MIN-VALUE':
-      return {
-        ...state,
-        minValue: action.payload,
-      };
+      return { ...state, minValue: action.payload };
     case 'SET-NUMBER':
-      return {
-        ...state,
-        number: action.payload,
-      };
+      return { ...state, number: action.payload };
     default: {
       return state;
     }
