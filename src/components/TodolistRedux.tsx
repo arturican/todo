@@ -1,16 +1,11 @@
 import React, { memo, useCallback } from 'react';
-import { FilterValuesType } from '../AppWithRedux';
 import { AddItemForm } from './AddItemForm';
 import { Button, IconButton } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import { TaskWithRedux } from './TaskWithRedux';
 import { EditSpan } from './EditSpan';
-
-export type TaskType = {
-  id: string;
-  title: string;
-  isDone: boolean;
-};
+import { TaskStatuses, TaskType } from '../api/todolist-api';
+import { FilterValuesType } from '../reducers/todolistReducer';
 
 type PropsType = {
   id: string;
@@ -19,7 +14,7 @@ type PropsType = {
   removeTask: (taskId: string, todolistId: string) => void;
   changeFilter: (value: FilterValuesType, todolistId: string) => void;
   addTask: (title: string, todolistId: string) => void;
-  changeTaskStatus: (id: string, isDone: boolean, todolistId: string) => void;
+  changeTaskStatus: (id: string, status: TaskStatuses, todolistId: string) => void;
   removeTodolist: (id: string) => void;
   changeTodolistTitle: (id: string, newTitle: string) => void;
   filter: FilterValuesType;
@@ -57,10 +52,10 @@ const TodolistMemo = (props: PropsType) => {
   let tasks = props.tasks;
 
   if (props.filter === 'active') {
-    tasks = tasks.filter((t) => t.isDone === false);
+    tasks = tasks.filter((t) => t.status === TaskStatuses.New);
   }
   if (props.filter === 'completed') {
-    tasks = tasks.filter((t) => t.isDone === true);
+    tasks = tasks.filter((t) => t.status === TaskStatuses.Completed);
   }
 
   return (

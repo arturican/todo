@@ -31,7 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "format": "prettier --write .",
@@ -97,6 +97,11 @@
   "lint-staged": {
     "*.{ts,tsx,js}": "yarn lint",
     "./**/*.css": "yarn lint:css:fix"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)"
+    ]
   },
   "husky": {
     "hooks": {

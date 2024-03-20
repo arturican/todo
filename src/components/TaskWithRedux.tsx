@@ -2,9 +2,9 @@ import React, { ChangeEvent } from 'react';
 import { Checkbox, IconButton } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { TaskType } from './TodolistRedux';
 import { changeTaskStatusAC, changeTaskTitleAC, removeTaskAC } from '../reducers/tasksReducer';
 import { EditSpan } from './EditSpan';
+import { TaskStatuses, TaskType } from '../api/todolist-api';
 
 type Props = {
   task: TaskType;
@@ -20,7 +20,7 @@ export const TaskWithRedux = ({ task, todolistID }: Props) => {
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const newIsDoneValue = e.currentTarget.checked;
-    dispatch(changeTaskStatusAC(task.id, newIsDoneValue, todolistID));
+    dispatch(changeTaskStatusAC(task.id, newIsDoneValue ? TaskStatuses.Completed : TaskStatuses.New, todolistID));
   };
 
   const onTitleChangeHandler = (newValue: string) => {
@@ -28,8 +28,8 @@ export const TaskWithRedux = ({ task, todolistID }: Props) => {
   };
 
   return (
-    <div className={task.isDone ? 'is-done' : ''}>
-      <Checkbox checked={task.isDone} color="primary" onChange={onChangeHandler} />
+    <div className={task.status === TaskStatuses.Completed ? 'is-done' : ''}>
+      <Checkbox checked={task.status === TaskStatuses.Completed} color="primary" onChange={onChangeHandler} />
       <EditSpan value={task.title} onChange={onTitleChangeHandler} />
       <IconButton onClick={onClickHandler}>
         <Delete />
