@@ -59,7 +59,7 @@ export const GetTask = () => {
   return <div>{JSON.stringify(state)}</div>;
 };
 export const CreateTask = () => {
-  const [state, setState] = useState<TodolistType[] | null>(null);
+  const [state, setState] = useState<ResponseType<{ item: TaskType }> | null>(null);
   useEffect(() => {
     const todolistId = 'fb308132-11a3-42fc-b085-12c18095013c';
     const title = 'HTML';
