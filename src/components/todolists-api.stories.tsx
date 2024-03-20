@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { ResponseType, todolistAPI, TodolistType } from '../api/todolist-api';
-import { taskAPI, TaskType } from '../api/task-api';
+import {
+  GetTasksResponse,
+  ResponseType,
+  TaskPriorities,
+  TaskStatuses,
+  TaskType,
+  todolistsAPI,
+  TodolistType,
+} from '../api/todolist-api';
 
 export default {
   title: 'API',
@@ -9,7 +16,7 @@ export default {
 export const GetTodolist = () => {
   const [state, setState] = useState<TodolistType[] | null>(null);
   useEffect(() => {
-    todolistAPI.getTodolist().then((res) => {
+    todolistsAPI.getTodolists().then((res) => {
       setState(res.data);
     });
   }, []);
@@ -19,7 +26,7 @@ export const CreateTodolist = () => {
   const [state, setState] = useState<ResponseType<{ item: TodolistType }> | null>(null);
   useEffect(() => {
     const data = 'html';
-    todolistAPI.createTodolist(data).then((res) => {
+    todolistsAPI.createTodolist(data).then((res) => {
       setState(res.data);
     });
   }, []);
@@ -30,7 +37,7 @@ export const DeleteTodolist = () => {
   const [state, setState] = useState<ResponseType | null>(null);
   useEffect(() => {
     const todolistId = 'a1752984-3827-4e85-875b-cb899a3e2b1d';
-    todolistAPI.deleteTodolist(todolistId).then((res) => {
+    todolistsAPI.deleteTodolist(todolistId).then((res) => {
       setState(res.data);
     });
   }, []);
@@ -42,17 +49,17 @@ export const UpdateTodolistTitle = () => {
   useEffect(() => {
     const todolistId = 'fb308132-11a3-42fc-b085-12c18095013c';
     const data = 'Redux';
-    todolistAPI.updateTodolist(todolistId, data).then((res) => {
+    todolistsAPI.updateTodolist(todolistId, data).then((res) => {
       setState(res.data);
     });
   }, []);
   return <div>{JSON.stringify(state)}</div>;
 };
 export const GetTask = () => {
-  const [state, setState] = useState<TaskType[] | null>(null);
+  const [state, setState] = useState<GetTasksResponse | null>(null);
   useEffect(() => {
     const todolistId = 'fb308132-11a3-42fc-b085-12c18095013c';
-    taskAPI.getTask(todolistId).then((res) => {
+    todolistsAPI.getTasks(todolistId).then((res) => {
       setState(res.data);
     });
   }, []);
@@ -63,7 +70,7 @@ export const CreateTask = () => {
   useEffect(() => {
     const todolistId = 'fb308132-11a3-42fc-b085-12c18095013c';
     const title = 'HTML';
-    taskAPI.createTask(todolistId, title).then((res) => {
+    todolistsAPI.createTask(todolistId, title).then((res) => {
       setState(res.data);
     });
   }, []);
@@ -74,7 +81,7 @@ export const DeleteTask = () => {
   useEffect(() => {
     const todolistId = 'fb308132-11a3-42fc-b085-12c18095013c';
     const taskId = '463c0da0-989e-445b-b5c0-ebc81dbb71eb';
-    taskAPI.deleteTask(todolistId, taskId).then((res) => {
+    todolistsAPI.deleteTask(todolistId, taskId).then((res) => {
       setState(res.data);
     });
   }, []);
@@ -85,8 +92,15 @@ export const UpdateTask = () => {
   useEffect(() => {
     const todolistId = 'fb308132-11a3-42fc-b085-12c18095013c';
     const taskId = 'd5d7fe4f-a208-48e4-932f-415ea54ec7da';
-    const title = 'dwsfdfgma;sdlfla;dsflsdfmsadmfkasdf;asdflksdflka;dlfklsdfk';
-    taskAPI.updateTask(todolistId, taskId, title).then((res) => {
+    const model = {
+      title: 'yOOOO',
+      description: 'ПРОСТО НАДПИСЬ',
+      status: TaskStatuses.New, // Use enum value directly
+      priority: TaskPriorities.Low,
+      startDate: '20.03.24',
+      deadline: 'ddd',
+    };
+    todolistsAPI.updateTask(todolistId, taskId, model).then((res) => {
       setState(res.data);
     });
   }, []);
