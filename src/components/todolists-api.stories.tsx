@@ -97,8 +97,8 @@ export const UpdateTask = () => {
       description: 'ПРОСТО НАДПИСЬ',
       status: TaskStatuses.New, // Use enum value directly
       priority: TaskPriorities.Low,
-      startDate: '20.03.24',
-      deadline: 'ddd',
+      startDate: '',
+      deadline: '',
     };
     todolistsAPI.updateTask(todolistId, taskId, model).then((res) => {
       setState(res.data);
